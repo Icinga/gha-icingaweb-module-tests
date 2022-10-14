@@ -22,5 +22,17 @@ setup_iw2() {
   icingacli version
 }
 
+require_modname() {
+  ln -vs "$(dirname "$0")/shortname_extractor" /usr/share/icingaweb2/modules/
+  icingacli mod en shortname_extractor
+
+  SHORTNAME="$(icingacli shortname mod shortname)"
+  test -n "$SHORTNAME"
+
+  icingacli mod dis shortname_extractor
+  rm -v /usr/share/icingaweb2/modules/shortname_extractor
+}
+
 php -v
 setup_iw2
+require_modname
