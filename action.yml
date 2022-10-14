@@ -9,4 +9,4 @@ runs:
       with:
         php-version: ${{ inputs.php-version }}
     - shell: bash
-      run: exec php -v
+      run: exec sudo '${{ github.action_path }}/action.bash'
