@@ -34,6 +34,8 @@ require_modname() {
 }
 
 test_mod() {
+  apt-get install -y php-mockery
+
   ln -vs "$PWD" "/usr/share/icingaweb2/modules/$SHORTNAME"
 
   icingacli mod en "$SHORTNAME"
