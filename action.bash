@@ -33,6 +33,16 @@ require_modname() {
   rm -v /usr/share/icingaweb2/modules/shortname_extractor
 }
 
+test_mod() {
+  ln -vs "$PWD" "/usr/share/icingaweb2/modules/$SHORTNAME"
+
+  icingacli mod en "$SHORTNAME"
+  icingacli mod en test
+
+  icingacli test php unit --verbose --include 'Tests\\\\Icinga\\\\Modules\\\\'"${SHORTNAME^}"
+}
+
 php -v
 setup_iw2
 require_modname
+test_mod
