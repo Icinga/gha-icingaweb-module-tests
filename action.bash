@@ -36,6 +36,9 @@ require_modname() {
 test_mod() {
   apt-get install -y php-mockery
 
+  # https://github.com/Icinga/icingaweb2/issues/4928
+  cp "$(dirname "$0")/Mockery/Loader.php" /usr/share/php/Mockery/
+
   ln -vs "$PWD" "/usr/share/icingaweb2/modules/$SHORTNAME"
 
   icingacli mod en "$SHORTNAME"
