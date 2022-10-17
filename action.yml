@@ -2,6 +2,7 @@
 inputs:
   php-version:
     required: true
+  extensions: {}
 runs:
   using: composite
   steps:
@@ -15,6 +16,7 @@ runs:
     - uses: shivammathur/setup-php@e04e1d97f0c0481c6e1ba40f8a538454fe5d7709 # 2.21.2
       with:
         php-version: ${{ inputs.php-version }}
+        extensions: ${{ inputs.extensions }}
         tools: phpunit${{ steps.phpunit_version.outputs.phpunit_version }}
 
     - shell: bash
