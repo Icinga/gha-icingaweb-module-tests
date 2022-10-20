@@ -43,8 +43,6 @@ test_mod() {
 
   icingacli mod en "$SHORTNAME"
   icingacli mod en test
-
-  icingacli test php unit --verbose --include "Tests\\Icinga\\Modules\\${SHORTNAME^}"
 }
 
 php -v
