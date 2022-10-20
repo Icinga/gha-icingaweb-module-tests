@@ -17,9 +17,10 @@ runs:
       with:
         php-version: ${{ inputs.php-version }}
         extensions: ${{ inputs.extensions }}
+        ini-values: include_path=.:/usr/share/php:/usr/share/icingaweb2/library:/usr/share/icingaweb2/library/vendor
         tools: phpunit${{ steps.phpunit_version.outputs.phpunit_version }}
 
     - shell: bash
       run: |
         sudo '${{ github.action_path }}/action.bash'
-        icingacli test php unit --include "Tests\\Icinga\\Modules\\x509" --verbose
+        icingacli test php unit --include "Tests\\Icinga\\Modules\\X509" --verbose
