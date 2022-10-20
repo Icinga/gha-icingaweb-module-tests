@@ -19,7 +19,6 @@ setup_iw2() {
   clone_composer icingaweb2 icingaweb2
 
   ln -vs /usr/share/icingaweb2/bin/icingacli /usr/local/bin/
-  chmod +x /usr/local/bin/icingacli
   icingacli version
 }
 
@@ -35,18 +34,18 @@ require_modname() {
 }
 
 test_mod() {
-  apt-get install -y php-mockery libapache2-mod-php
+  apt-get install -y php-mockery
 
   # https://github.com/Icinga/icingaweb2/issues/4928
   cp "$(dirname "$0")/Mockery/Loader.php" /usr/share/php/Mockery/
 
-  ln -vs "$PWD" "/usr/share/icingaweb2/modules/$SHORTNAME"
+  cp "$PWD" "/usr/share/icingaweb2/modules/$SHORTNAME"
   
   icingacli mod en "$SHORTNAME"
   chown -R runner:docker /etc/icingaweb2/enabledModules
   
   icingacli mod en test
-  ls -la /etc/icingaweb2/enabledModules
+  chown -R runner:docker /etc/icingaweb2/enabledModules
 }
 
 php -v
