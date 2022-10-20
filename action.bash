@@ -46,7 +46,7 @@ test_mod() {
   chown -R runner:docker /etc/icingaweb2/enabledModules
   
   icingacli mod en test
-  ln -la /etc/icingaweb2/enabledModules
+  ls -la /etc/icingaweb2/enabledModules
 }
 
 php -v
