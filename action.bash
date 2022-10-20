@@ -40,9 +40,10 @@ test_mod() {
   cp "$(dirname "$0")/Mockery/Loader.php" /usr/share/php/Mockery/
 
   ln -vs "$PWD" "/usr/share/icingaweb2/modules/$SHORTNAME"
-  ls -la "$PWD"
+  
   icingacli mod en "$SHORTNAME"
-  ls -la /etc/icingaweb2
+  chown -R runner:docker /etc/icingaweb2/enabledModules
+  
   icingacli mod en test
 }
 
