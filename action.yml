@@ -21,4 +21,4 @@ runs:
         tools: phpunit${{ steps.phpunit_version.outputs.phpunit_version }}
 
     - shell: bash
-      run: sudo '${{ github.action_path }}/action.bash'
+      run: exec sudo '${{ github.action_path }}/action.bash'
