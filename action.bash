@@ -45,7 +45,7 @@ test_mod() {
   chown -R runner:docker /etc/icingaweb2/enabledModules
   
   icingacli mod en test
-  chown -R runner:docker /etc/icingaweb2/enabledModules
+  #chown -R runner:docker /etc/icingaweb2/enabledModules
   
   icingacli test php unit --verbose --include 'Tests\\\\Icinga\\\\Modules\\\\'"${SHORTNAME^}"
 }
