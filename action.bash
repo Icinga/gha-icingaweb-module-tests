@@ -47,7 +47,7 @@ test_mod() {
   icingacli mod en test
   chown -R runner:docker /etc/icingaweb2/enabledModules
   
-  ls -la test/php/library/X509
+  icingacli test php unit --include 'Tests\\\\Icinga\\\\Modules\\\\X509' --verbose
 }
 
 php -v
