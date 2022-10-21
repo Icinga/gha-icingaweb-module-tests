@@ -21,6 +21,4 @@ runs:
         tools: phpunit${{ steps.phpunit_version.outputs.phpunit_version }}
 
     - shell: bash
-      run: |
-        sudo '${{ github.action_path }}/action.bash'
-        icingacli test php unit --include 'Tests\\\\Icinga\\\\Modules\\\\X509' --verbose
+      run: sudo '${{ github.action_path }}/action.bash'
