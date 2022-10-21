@@ -41,11 +41,8 @@ test_mod() {
 
   cp -r "$PWD" "/usr/share/icingaweb2/modules/$SHORTNAME"
   
-  icingacli mod en "$SHORTNAME"
-  chown -R runner:docker /etc/icingaweb2/enabledModules
-  
+  icingacli mod en "$SHORTNAME"  
   icingacli mod en test
-  #chown -R runner:docker /etc/icingaweb2/enabledModules
   
   icingacli test php unit --verbose --include 'Tests\\\\Icinga\\\\Modules\\\\'"${SHORTNAME^}"
 }
