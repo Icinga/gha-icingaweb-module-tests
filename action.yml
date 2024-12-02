@@ -1,0 +1,24 @@
+---
+inputs:
+  php-version:
+    required: true
+  extensions: { }
+runs:
+  using: composite
+  steps:
+    - id: phpunit_version
+      shell: bash
+      run: >
+        echo "phpunit_version=$('${{ github.action_path }}/phpunit-version.bash' '${{ inputs.php-version }}')"
+        >>"$GITHUB_OUTPUT"
+
+    - uses: actions/checkout@v3
+
+    - uses: shivammathur/setup-php@e04e1d97f0c0481c6e1ba40f8a538454fe5d7709 # 2.21.2
+      with:
+        php-version: ${{ inputs.php-version }}
+        extensions: ${{ inputs.extensions }}
+        tools: phpunit${{ steps.phpunit_version.outputs.phpunit_version }}
+
+    - shell: bash
+      run: exec sudo '${{ github.action_path }}/action.bash'
